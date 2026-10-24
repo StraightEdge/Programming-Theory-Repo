@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
 
@@ -12,14 +11,12 @@ public class PlayerController : MonoBehaviour
     public InputAction moveAction;
     private Vector2 moveInput;
 
-    private Rigidbody playerRb;
     private readonly float tiltAngle = 15.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         moveAction.Enable();
-        playerRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -37,7 +34,8 @@ public class PlayerController : MonoBehaviour
     private void MovePlayer()
     {
         moveInput = moveAction.ReadValue<Vector2>();
-        playerRb.linearVelocity = new Vector3(moveInput.x * speed, moveInput.y * speed, 0);
+        Vector3 move = new(moveInput.x, moveInput.y, 0);
+        transform.Translate(speed * Time.deltaTime * move, Space.World);
 
         // Tilt the spaceship when moving up or down
         float tilt = Mathf.Clamp(moveInput.y * tiltAngle, -tiltAngle, tiltAngle);

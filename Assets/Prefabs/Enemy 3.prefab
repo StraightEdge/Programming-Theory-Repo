@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8548237401753978737}
   - component: {fileID: 1367181274809991743}
   - component: {fileID: 5279573896770436266}
-  - component: {fileID: 4750809370457718155}
+  - component: {fileID: -2794733042213357380}
   m_Layer: 0
   m_Name: Enemy 3
   m_TagString: Enemy
@@ -138,11 +138,11 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &4750809370457718155
+--- !u!114 &-2794733042213357380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,9 +151,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2912687450580635335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b33425068b99246baaf9e4661e8d51, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ea3279ebe06b9c429642d633834e1bf, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
   speed: 10
 --- !u!1001 &4247130334733645414
 PrefabInstance:

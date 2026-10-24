@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4376419827390645780}
   - component: {fileID: 1510576477042429961}
   - component: {fileID: 524312554629799684}
-  - component: {fileID: 9017708374104768029}
   - component: {fileID: 8382741230376102695}
+  - component: {fileID: 9165717492968577792}
   m_Layer: 0
   m_Name: Enemy 4
   m_TagString: Enemy
@@ -117,23 +117,10 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &9017708374104768029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3903364624668503258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b33425068b99246baaf9e4661e8d51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MoveLeft
-  speed: 5
 --- !u!65 &8382741230376102695
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,6 +142,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9165717492968577792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3903364624668503258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13b9e171c0d7e948b37aee7ad20d8de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpaceship
+  speed: 5
 --- !u!1001 &296126861388654425
 PrefabInstance:
   m_ObjectHideFlags: 0
