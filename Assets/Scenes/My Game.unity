@@ -922,6 +922,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   enemies:
+  - {fileID: 6646962228931957307, guid: a8a6663ed60379646b378e07b7ab4a37, type: 3}
+  - {fileID: 3184108504710697254, guid: 19e71bce654617b4cac1e9040bc91e65, type: 3}
+  - {fileID: 2912687450580635335, guid: 6f2a8d0428f720746907defbc06cb2dd, type: 3}
   - {fileID: 3903364624668503258, guid: 44b83908bc50ac34fafbfa67af0c108a, type: 3}
   powerup: {fileID: 1627825542002033389, guid: c0d910d5193c09f44a1a57fe6aeefbba, type: 3}
 --- !u!4 &1282665802
@@ -1193,6 +1196,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7579999821183843496, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
+      propertyPath: rocketPrefab
+      value: 
+      objectReference: {fileID: 7143701248685675217, guid: 80b05c4a8c257b0499951746daebedc9, type: 3}
     - target: {fileID: 8356072054560569683, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2

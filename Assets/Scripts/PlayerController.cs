@@ -8,32 +8,51 @@ public class PlayerController : MonoBehaviour
     public float xRange = 17.5f;
     public float yRange = 6.5f;
 
-    public InputAction moveAction;
-    private Vector2 moveInput;
+    private InputSystem_Actions controls;
 
     private readonly float tiltAngle = 15.0f;
+
+    public GameObject rocketPrefab;
+
+    // Awake is called when the script instance is being loaded
+    void Awake()
+    {
+        controls = new InputSystem_Actions();
+    }
+
+    // OnEnable is called when the object becomes enabled and active
+    void OnEnable()
+    {
+        controls.Player.Enable();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        moveAction.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
         ConstrainPlayerPosition();
+
+        // Fire rocket if attack button was pressed this frame 
+        if (controls.Player.Attack.WasPressedThisFrame())
+        {
+            LaunchRocket();
+        }
     }
 
     void FixedUpdate()
     {
         MovePlayer();
+
     }
 
     // Moves the player based on WASD input
     private void MovePlayer()
     {
-        moveInput = moveAction.ReadValue<Vector2>();
+        Vector2 moveInput = controls.Player.Move.ReadValue<Vector2>();
         Vector3 move = new(moveInput.x, moveInput.y, 0);
         transform.Translate(speed * Time.deltaTime * move, Space.World);
 
@@ -78,5 +97,16 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+    }
+
+    // Launch a rocket from the player's position
+    private void LaunchRocket()
+    {
+        // Instantiate a rocket prefab at the player's position and rotation
+        GameObject rocket = Instantiate(rocketPrefab, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
+        // Get the RocketBehaviour component of the instantiated rocket
+        RocketBehaviour rocketBehaviour = rocket.GetComponent<RocketBehaviour>();
+        // Fire the rocket in the forward direction of the player
+        rocketBehaviour.Fire(new Vector3(1, 0, 0));
     }
 }
