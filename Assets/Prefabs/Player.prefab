@@ -157,56 +157,9 @@ MonoBehaviour:
   speed: 15
   xRange: 17.5
   yRange: 6.5
-  moveAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 7596f8c9-64fa-4995-b18a-b708e925ecd0
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 2D Vector
-      m_Id: aa838dd7-ae69-4db1-ab07-e9cf4bba4dfc
-      m_Path: 2DVector
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 4
-    - m_Name: up
-      m_Id: 9c3de9bf-fd8e-4862-a0ad-7163e71cdd62
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 471e3263-978f-4ecc-9cd7-85b4b6d0edf4
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: left
-      m_Id: 1b62e51a-aa38-47dc-ad2a-e377b13df3c5
-      m_Path: <Keyboard>/a
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: right
-      m_Id: 41c8e2ac-3edc-40a8-84dd-1af0f9ba7ae5
-      m_Path: <Keyboard>/d
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    m_Flags: 0
-    m_Priority: 0
+  rocketPrefab: {fileID: 0}
+  hasPowerup: 0
+  lives: 3
 --- !u!1001 &452629022691261428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -215,6 +168,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7312335990690578207}
     m_Modifications:
+    - target: {fileID: 5141867970996684812, guid: d0ee9ecd775e34846983a62b384b28da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8484417692259697319, guid: d0ee9ecd775e34846983a62b384b28da, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2

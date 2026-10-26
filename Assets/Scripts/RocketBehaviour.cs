@@ -2,12 +2,10 @@ using UnityEngine;
 
 public class RocketBehaviour : MonoBehaviour
 {
-    private bool alive = false;
-
     public float speed = 30.0f;
-    private Vector3 direction;
+    public Vector3 Direction { get; set; }
 
-    private float xDestroy = -22.0f;
+    private readonly float xDestroy = -22.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,11 +14,8 @@ public class RocketBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (alive)
-        {
-            // Move the rocket forward in the direction it was fired
-            transform.Translate(speed * Time.deltaTime * direction, Space.World);
-        }
+        // Move the rocket forward in the direction it was fired
+        transform.Translate(speed * Time.deltaTime * Direction, Space.World);
 
         if (transform.position.x < xDestroy || transform.position.x > -xDestroy)
         {
@@ -28,13 +23,13 @@ public class RocketBehaviour : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Fires the rocket in the specified direction.
-    /// </summary>
-    /// <param name="direction">The direction to fire the rocket.</param>
-    public void Fire(Vector3 dir)
+    // Called when the rocket collides with another object
+    private void OnCollisionEnter(Collision collision)
     {
-        alive = true;
-        direction = dir.normalized;
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 }

@@ -1129,23 +1129,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1259451990702764505, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
-      propertyPath: m_Constraints
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1259451990702764505, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1259451990702764505, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
       propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1259451990702764505, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
-      propertyPath: m_LinearDamping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1259451990702764505, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
-      propertyPath: m_ImplicitTensor
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4823881236518010087, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
@@ -1197,9 +1181,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7579999821183843496, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
+      propertyPath: lives
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579999821183843496, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
       propertyPath: rocketPrefab
       value: 
       objectReference: {fileID: 7143701248685675217, guid: 80b05c4a8c257b0499951746daebedc9, type: 3}
+    - target: {fileID: 7579999821183843496, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 9125212449759046732, guid: cb7cd9b0c56a24d49a40784bd3203ae6, type: 3}
     - target: {fileID: 8356072054560569683, guid: b531d513a308a2b41bdfb389c78537a2, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2

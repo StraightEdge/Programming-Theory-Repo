@@ -8,11 +8,15 @@ public class PlayerController : MonoBehaviour
     public float xRange = 17.5f;
     public float yRange = 6.5f;
 
-    private InputSystem_Actions controls;
-
     private readonly float tiltAngle = 15.0f;
 
     public GameObject rocketPrefab;
+    public ParticleSystem explosionEffect;
+
+    private InputSystem_Actions controls;
+
+    public bool hasPowerup = false;
+    public int lives = 1;
 
     // Awake is called when the script instance is being loaded
     void Awake()
@@ -29,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.Log("Lives: " + lives);
     }
 
     // Update is called once per frame
@@ -39,8 +44,20 @@ public class PlayerController : MonoBehaviour
         // Fire rocket if attack button was pressed this frame 
         if (controls.Player.Attack.WasPressedThisFrame())
         {
-            LaunchRocket();
+            if (hasPowerup)
+            {
+                LaunchRocketWithSpread();
+            }
+            else
+            {
+                LaunchSingleRocket();
+            }
         }
+    }
+
+    void OnDisable()
+    {
+        controls.Player.Disable();
     }
 
     void FixedUpdate()
@@ -87,7 +104,22 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Player has collided with an enemy.");
+            lives--;
+            hasPowerup = false;
+            Destroy(collision.gameObject);
+
+            if (lives <= 0)
+            {
+                Debug.Log("Player has died.");
+                Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("Player has collided with an enemy.");
+                Debug.Log("Lives: " + lives);
+            }
         }
     }
 
@@ -95,18 +127,39 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Powerup"))
         {
+            Debug.Log("Player has collected a powerup.");
             Destroy(other.gameObject);
+            hasPowerup = true;
         }
     }
 
-    // Launch a rocket from the player's position
-    private void LaunchRocket()
+    // Launch a single rocket projectile
+    private void LaunchSingleRocket()
     {
         // Instantiate a rocket prefab at the player's position and rotation
-        GameObject rocket = Instantiate(rocketPrefab, transform.position + new Vector3(1, 0, 0), Quaternion.identity);
+        GameObject rocket = Instantiate(rocketPrefab, transform.position + Vector3.right, Quaternion.identity);
         // Get the RocketBehaviour component of the instantiated rocket
         RocketBehaviour rocketBehaviour = rocket.GetComponent<RocketBehaviour>();
-        // Fire the rocket in the forward direction of the player
-        rocketBehaviour.Fire(new Vector3(1, 0, 0));
+        // Set the direction of the rocket to the right
+        rocketBehaviour.Direction = Vector3.right;
+    }
+
+    // Launch three rocket projectiles in a spread pattern
+    private void LaunchRocketWithSpread()
+    {
+        // Instantiate three rocket prefabs at the player's position and rotation
+        GameObject rocket1 = Instantiate(rocketPrefab, transform.position + Vector3.right, Quaternion.identity);
+        GameObject rocket2 = Instantiate(rocketPrefab, transform.position + Vector3.right + Vector3.up, Quaternion.identity);
+        GameObject rocket3 = Instantiate(rocketPrefab, transform.position + Vector3.right + Vector3.down, Quaternion.identity);
+
+        // Get the RocketBehaviour components of the instantiated rockets
+        RocketBehaviour rocketBehaviour1 = rocket1.GetComponent<RocketBehaviour>();
+        RocketBehaviour rocketBehaviour2 = rocket2.GetComponent<RocketBehaviour>();
+        RocketBehaviour rocketBehaviour3 = rocket3.GetComponent<RocketBehaviour>();
+
+        // Set the directions of the rockets
+        rocketBehaviour1.Direction = Vector3.right;
+        rocketBehaviour2.Direction = Vector3.right;
+        rocketBehaviour3.Direction = Vector3.right;
     }
 }
