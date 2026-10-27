@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,9 +16,12 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem explosionEffect;
 
     private InputSystem_Actions controls;
+    
+    public TMP_Text gameOverText;
 
     public bool hasPowerup = false;
     public int lives = 1;
+
 
     // Awake is called when the script instance is being loaded
     void Awake()
@@ -39,19 +44,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ConstrainPlayerPosition();
-
-        // Fire rocket if attack button was pressed this frame 
-        if (controls.Player.Attack.WasPressedThisFrame())
+        if (UIManager.isGameActive)
         {
-            if (hasPowerup)
+            ConstrainPlayerPosition();
+
+            // Fire rocket if attack button was pressed this frame 
+            if (controls.Player.Attack.WasPressedThisFrame())
             {
-                LaunchRocketWithSpread();
+                if (hasPowerup)
+                {
+                    LaunchRocketWithSpread();
+                }
+                else
+                {
+                    LaunchSingleRocket();
+                }
             }
-            else
-            {
-                LaunchSingleRocket();
-            }
+            ;
         }
     }
 
@@ -62,8 +71,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        MovePlayer();
-
+        if (UIManager.isGameActive)
+        {
+            MovePlayer();
+        }
     }
 
     // Moves the player based on WASD input
@@ -112,7 +123,8 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Player has died.");
                 Instantiate(explosionEffect, transform.position, Quaternion.identity);
-
+                UIManager.isGameActive = false;
+                gameOverText.gameObject.SetActive(true);
                 Destroy(gameObject);
             }
             else

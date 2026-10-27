@@ -29,19 +29,26 @@ public class SpawnManager : MonoBehaviour
 
     void SpawnRandomEnemy()
     {
-        float yRandom = Random.Range(-ySpawnRange, ySpawnRange);
-        int randomIndex = Random.Range(0, enemies.Length);
+        if (UIManager.isGameActive)
+        {
+            float yRandom = Random.Range(-ySpawnRange, ySpawnRange);
+            int randomIndex = Random.Range(0, enemies.Length);
 
-        Vector3 spawnPos = new(xEnemySpawn, yRandom, zSpawn);
-        Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].transform.rotation);
+            Vector3 spawnPos = new(xEnemySpawn, yRandom, zSpawn);
+            Instantiate(enemies[randomIndex], spawnPos, enemies[randomIndex].transform.rotation);
+        }
+
     }
 
     void SpawnPowerup()
     {
-        float xRandom = Random.Range(-xPowerupRange, 0.0f);
-        float yRandom = Random.Range(-ySpawnRange, ySpawnRange);
+        if (UIManager.isGameActive)
+        {
+            float xRandom = Random.Range(-xPowerupRange, 0.0f);
+            float yRandom = Random.Range(-ySpawnRange, ySpawnRange);
 
-        Vector3 spawnPos = new(xRandom, yRandom, zSpawn);
-        Instantiate(powerup, spawnPos, powerup.transform.rotation);
+            Vector3 spawnPos = new(xRandom, yRandom, zSpawn);
+            Instantiate(powerup, spawnPos, powerup.transform.rotation);
+        }
     }
 }
