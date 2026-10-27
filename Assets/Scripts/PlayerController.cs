@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem explosionEffect;
 
     private InputSystem_Actions controls;
-    
+
     public TMP_Text gameOverText;
 
     public bool hasPowerup = false;
@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // ABSTRACTION
     // Moves the player based on WASD input
     private void MovePlayer()
     {
@@ -89,6 +90,7 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(tilt, 0, 0);
     }
 
+    // ABSTRACTION
     // Prevent the player from moving outside the bounds of the screen
     private void ConstrainPlayerPosition()
     {
@@ -145,6 +147,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // ABSTRACTION
     // Launch a single rocket projectile
     private void LaunchSingleRocket()
     {
@@ -156,6 +159,7 @@ public class PlayerController : MonoBehaviour
         rocketBehaviour.Direction = Vector3.right;
     }
 
+    // ABSTRACTION
     // Launch three rocket projectiles in a spread pattern
     private void LaunchRocketWithSpread()
     {

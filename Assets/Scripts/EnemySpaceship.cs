@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// INHERITANCE
 public class EnemySpaceship : Enemy
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,6 +16,7 @@ public class EnemySpaceship : Enemy
         DestroyOutOfBound();        
     }
 
+    // POLYMORPHISM
     // Move the enemy spaceship to the left with a sine wave pattern 
     // with a constant speed, low frequency, and low amplitude
     protected override void Move()

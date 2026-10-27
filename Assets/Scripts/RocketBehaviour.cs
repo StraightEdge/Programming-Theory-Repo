@@ -3,6 +3,8 @@ using UnityEngine;
 public class RocketBehaviour : MonoBehaviour
 {
     public float speed = 30.0f;
+
+    // ENCAPSULATION
     public Vector3 Direction { get; set; }
 
     private readonly float xDestroy = -22.0f;
